@@ -1,0 +1,7 @@
+project: rustls-native-certs
+target: readfile
+
+cmds:
+  - cmd: /readfile
+  - cmd: /readfile_no_inst @@
+    libfuzzer: false
