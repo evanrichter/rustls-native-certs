@@ -1,0 +1,28 @@
+[package]
+name = "rustls-native-certs-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2018"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+memfd_path = "0.1.1"
+
+[dependencies.rustls-native-certs]
+path = ".."
+
+# Prevent this from interfering with workspaces
+[workspace]
+members = ["."]
+
+[[bin]]
+name = "readfile"
+path = "fuzz_targets/readfile.rs"
+test = false
+doc = false
+
+[profile.release]
+debug = true
